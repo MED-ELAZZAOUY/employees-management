@@ -1,4 +1,4 @@
-package ma.fsa.employeesmanagement.dao.entites;
+package ma.fsa.employeesmanagement.dao.entities;
 
 public class Employee {
     private int idEmployee;

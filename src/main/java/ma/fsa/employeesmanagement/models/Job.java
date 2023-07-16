@@ -1,10 +1,9 @@
-package ma.fsa.employeesmanagement.dao.entites;
+package ma.fsa.employeesmanagement.dao.entities;
 
 public class Job {
     private int idJob;
     private String jobName;
     private Double salary;
-
     private String description;
     private int idEmployee;
 

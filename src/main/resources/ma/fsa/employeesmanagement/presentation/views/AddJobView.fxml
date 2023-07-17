@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.fsa.employeesmanagement.controllers.AddJobController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.fsa.employeesmanagement.controllers.AddJobController">
    <children>
       <VBox layoutY="-1.0" prefHeight="594.0" prefWidth="893.0" spacing="20.0">
          <children>
@@ -28,17 +29,7 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="500.0">
                      <children>
-                        <Label text="ID">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Label>
-                        <Pane prefHeight="34.0" prefWidth="217.0" />
-                        <TextField fx:id="idField" prefHeight="25.0" prefWidth="204.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="500.0">
-                     <children>
-                        <Label text="NAME">
+                        <Label text="Name ">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
@@ -65,6 +56,16 @@
                         </Label>
                         <Pane prefHeight="36.0" prefWidth="160.0" />
                         <TextField fx:id="descriptionField" prefHeight="25.0" prefWidth="204.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="500.0">
+                     <children>
+                        <Label text="ID Employee">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Pane prefHeight="36.0" prefWidth="151.0" />
+                        <ComboBox fx:id="idEmployeeComboBox" onMouseClicked="#clik" prefHeight="25.0" prefWidth="204.0"> </ComboBox>
                      </children>
                   </HBox>
                </children>

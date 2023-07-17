@@ -1,25 +1,27 @@
-package ma.fsa.employeesmanagement.dao.entities;
+package ma.fsa.employeesmanagement.models;
+
+import java.util.UUID;
 
 public class Employee {
-    private int idEmployee;
+    private String idEmployee;
     private String firstName;
     private String lastName;
     private String CIN;
     private Double solde;
 
-    public Employee(int idEmployee, String firstName, String lastName, String CIN, Double solde) {
-        this.idEmployee = idEmployee;
+    public Employee(String firstName, String lastName, String CIN, Double solde) {
+        this.idEmployee = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.CIN = CIN;
         this.solde = solde;
     }
 
-    public int getIdEmployee() {
+    public String getIdEmployee() {
         return idEmployee;
     }
 
-    public void setIdEmployee(int idEmployee) {
+    public void setIdEmployee(String idEmployee) {
         this.idEmployee = idEmployee;
     }
 

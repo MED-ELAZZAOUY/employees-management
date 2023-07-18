@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -16,16 +17,15 @@ import ma.fsa.employeesmanagement.dao.EmployeeDao;
 import ma.fsa.employeesmanagement.dao.JobDao;
 import ma.fsa.employeesmanagement.models.Employee;
 import ma.fsa.employeesmanagement.models.Job;
+import ma.fsa.employeesmanagement.utils.Option;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 
 public class AddJobController implements Initializable {
-    @FXML
-    private TextField idField;
-
     @FXML
     private TextField nameField;
 
@@ -44,30 +44,44 @@ public class AddJobController implements Initializable {
     private Dao<Job> jobDao;
     private Dao<Employee> employeeDao;
 
+    private Option selectedOption;
+
     public AddJobController() {
+        employeeDao = new EmployeeDao();
         //  (we can also inject it using a dependency injection framework)
         jobDao = new JobDao();
-        employeeDao = new EmployeeDao();
     }
     @FXML
-    void handleAddJob(MouseEvent event) throws IOException {
+    private void handleAddJob(MouseEvent event) throws IOException {
         if (event.getSource() != addJobButton)
             return;
 
-        //String idJob = idField.getText();
         String name = nameField.getText();
-        double salary = Double.parseDouble(salaryField.getText());
+        String salaryText = salaryField.getText();
         String description = descriptionField.getText();
-        String idEmployee = (String) idEmployeeComboBox.getSelectionModel().getSelectedItem();
-        System.out.println(idEmployee);
+        String idEmployee = null;
 
-        Job job = new Job(name, description, salary, idEmployee);
+        double salary;
+        try {
+            salary = Double.parseDouble(salaryText);
+        } catch (NumberFormatException e) {
+            return;
+        }
 
+        if (selectedOption != null) {
+            idEmployee = selectedOption.getId();
+        } else {
+            showWarningAlert("Please select Employee!");
+            return;
+        }
 
+        System.out.println("idEmployee : "+ idEmployee);
+        Job job = new Job(UUID.randomUUID().toString(), name, description, salary, idEmployee);
+
+        System.out.println(job);
         jobDao.save(job);
 
         // Clear the input fields after adding the job
-        idField.clear();
         nameField.clear();
         salaryField.clear();
         descriptionField.clear();
@@ -75,6 +89,14 @@ public class AddJobController implements Initializable {
 
         // openMainMenu("../presentation/views/addJobView.fxml");
     }
+
+    private void showWarningAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText(message);
+        alert.show();
+    }
+
+
 
     private void openMainMenu(String link) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
@@ -88,7 +110,14 @@ public class AddJobController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         employeeDao.getAll().forEach(aClass ->{
-            idEmployeeComboBox.getItems().add(aClass.getLastName()+","+aClass.getCIN());
+            idEmployeeComboBox.getItems().add(new Option(aClass.getIdEmployee(), aClass.getLastName()+", "+aClass.getCIN()));
+        });
+        idEmployeeComboBox.setOnAction(e ->{
+             selectedOption = (Option) idEmployeeComboBox.getValue();
+
+            if (selectedOption != null) {
+                System.out.println("Selected Employee Id : " + selectedOption.getId());
+            }
         });
 
     }

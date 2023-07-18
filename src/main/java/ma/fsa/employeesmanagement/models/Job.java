@@ -9,8 +9,9 @@ public class Job {
     private String description;
     private String idEmployee;
 
-    public Job(String jobName, String description, double salary, String idEmployee) {
-        this.idJob = UUID.randomUUID().toString();
+
+    public Job(String id, String jobName, String description, double salary, String idEmployee) {
+        this.idJob = id;
         this.jobName = jobName;
         this.description =description;
         this.salary = salary;
@@ -19,6 +20,10 @@ public class Job {
 
     public String getIdJob() {
         return idJob;
+    }
+
+    public void setIdJob(String idJob) {
+        this.idJob = idJob;
     }
 
     public String getJobName() {

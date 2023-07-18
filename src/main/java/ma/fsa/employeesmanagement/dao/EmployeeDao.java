@@ -26,11 +26,11 @@ public class EmployeeDao implements Dao<Employee>{
 
             while (rs.next()) {
                 Employee employee = new Employee(
+                        rs.getString("idEmployee"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("CIN"),
                         rs.getDouble("solde")
-
                 );
                 employees.add(employee);
             }
@@ -48,7 +48,7 @@ public class EmployeeDao implements Dao<Employee>{
     }
 
     @Override
-    public Employee getById(int id) {
+    public Employee getById(String id) {
         return null;
     }
 

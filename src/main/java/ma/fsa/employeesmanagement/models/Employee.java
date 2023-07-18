@@ -9,8 +9,8 @@ public class Employee {
     private String CIN;
     private Double solde;
 
-    public Employee(String firstName, String lastName, String CIN, Double solde) {
-        this.idEmployee = UUID.randomUUID().toString();
+    public Employee(String id, String firstName, String lastName, String CIN, Double solde) {
+        this.idEmployee = id ;
         this.firstName = firstName;
         this.lastName = lastName;
         this.CIN = CIN;

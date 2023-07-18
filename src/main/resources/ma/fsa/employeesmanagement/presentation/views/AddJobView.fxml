@@ -60,12 +60,12 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="500.0">
                      <children>
-                        <Label text="ID Employee">
+                        <Label text="Employee">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                        <Pane prefHeight="36.0" prefWidth="151.0" />
-                        <ComboBox fx:id="idEmployeeComboBox" onMouseClicked="#clik" prefHeight="25.0" prefWidth="204.0"> </ComboBox>
+                        <Pane prefHeight="36.0" prefWidth="168.0" />
+                        <ComboBox fx:id="idEmployeeComboBox" prefHeight="25.0" prefWidth="203.0"> </ComboBox>
                      </children>
                   </HBox>
                </children>

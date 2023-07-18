@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class JobDao implements Dao<Job>{
     private Connection connection;
 
@@ -26,7 +27,7 @@ public class JobDao implements Dao<Job>{
 
             while (rs.next()) {
                 Job job = new Job(
-                        //rs.getString("idJob"),
+                        rs.getString("idJob"),
                         rs.getString("jobName"),
                         rs.getString("description"),
                         rs.getDouble("salary"),
@@ -48,15 +49,15 @@ public class JobDao implements Dao<Job>{
     }
 
     @Override
-    public Job getById(int id) {
+    public Job getById(String id) {
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM Job WHERE idJob = ?");
-            ps.setInt(1, id);
+            ps.setString(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 return new Job(
-                        //rs.getString("idJob"),
+                        rs.getString("idJob"),
                         rs.getString("jobName"),
                         rs.getString("description"),
                         rs.getDouble("salary"),

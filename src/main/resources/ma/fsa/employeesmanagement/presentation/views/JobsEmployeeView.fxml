@@ -49,12 +49,12 @@
                   </HBox>
                </children>
             </VBox>
-              <TableView fx:id="table_jobs" prefHeight="212.0" prefWidth="854.0">
+              <TableView fx:id="jobsTableView" prefHeight="212.0" prefWidth="854.0">
                   <columns>
-                  <TableColumn fx:id="col_jobid" prefWidth="58.0" text="ID" />
-                      <TableColumn fx:id="col_jobtitle" prefWidth="370.0" text="Name" />
-                      <TableColumn fx:id="col_jobsalary" prefWidth="269.0" text="Salary" />
-                  <TableColumn fx:id="col_action" minWidth="0.0" prefWidth="316.0" text="Actions" />
+                  <TableColumn fx:id="idJobTabColumn" prefWidth="58.0" text="ID" />
+                      <TableColumn fx:id="jobNameTabColumn" prefWidth="370.0" text="Name" />
+                      <TableColumn fx:id="salaryTabColumn" prefWidth="269.0" text="Salary" />
+                  <TableColumn fx:id="actionTabColumn" minWidth="0.0" prefWidth="316.0" text="Actions" />
                   </columns>
               </TableView>
             <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" style="-fx-background-color: F9A80C; -fx-background-radius: 50;" text="Employee Infos">
@@ -62,13 +62,13 @@
                   <Font name="Corbel Bold" size="14.0" />
                </font>
             </Button>
-            <TableView fx:id="usersTableView1" prefHeight="178.0" prefWidth="994.0">
+            <TableView fx:id="employeeTableView" prefHeight="178.0" prefWidth="994.0">
                <columns>
-                  <TableColumn fx:id="colId1" prefWidth="58.0" text="ID" />
-                  <TableColumn fx:id="colNom1" prefWidth="192.0" text="Last Name" />
-                  <TableColumn fx:id="colPrenom1" prefWidth="207.0" text="First Name" />
-                  <TableColumn fx:id="colFonction1" prefWidth="197.0" text="CIN" />
-                  <TableColumn fx:id="colTelephone1" prefWidth="359.0" text="Solde" />
+                  <TableColumn fx:id="idEmployeeTabColumn" prefWidth="58.0" text="ID" />
+                  <TableColumn fx:id="firstNameTabColumn" prefWidth="192.0" text="Last Name" />
+                  <TableColumn fx:id="lastNameTabColumn" prefWidth="207.0" text="First Name" />
+                  <TableColumn fx:id="CINTabColumn" prefWidth="197.0" text="CIN" />
+                  <TableColumn fx:id="soldeTabColumn" prefWidth="359.0" text="Solde" />
                </columns>
             </TableView>
          </children>

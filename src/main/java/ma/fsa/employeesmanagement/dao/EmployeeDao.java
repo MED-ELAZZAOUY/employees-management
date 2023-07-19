@@ -48,9 +48,58 @@ public class EmployeeDao implements Dao<Employee>{
     }
 
     @Override
-    public Employee getById(String id) {
+    public Employee getById(String idEmployee) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM Employee WHERE idEmployee = ?");
+            ps.setString(1, idEmployee);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return new Employee(
+                        rs.getString("idEmployee"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("CIN"),
+                        rs.getDouble("solde")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         return null;
     }
+
+    @Override
+    public Employee update(Employee employee) {
+        try {
+            PreparedStatement ps = connection.prepareStatement("UPDATE Employee SET firstName = ?, lastName = ?, CIN = ?, solde = ? WHERE idEmployee = ?");
+            ps.setString(1, employee.getFirstName());
+            ps.setString(2, employee.getLastName());
+            ps.setString(3, employee.getCIN());
+            ps.setDouble(4, employee.getSolde());
+            ps.setString(5, employee.getIdEmployee());
+
+            ps.executeUpdate();
+
+            return employee;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     @Override
     public void save(Employee o) {
@@ -62,8 +111,5 @@ public class EmployeeDao implements Dao<Employee>{
         return false;
     }
 
-    @Override
-    public Employee update(Employee o) {
-        return null;
-    }
+
 }

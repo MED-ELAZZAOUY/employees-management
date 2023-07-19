@@ -144,4 +144,36 @@ public class JobDao implements Dao<Job>{
         }
     }
 
+    //--------------------------------------
+    public List<Job> getJobs(String idEmployee) {
+        List<Job> jobs = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM Job WHERE idEmployee = ?");
+            ps.setString(1, idEmployee);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Job job = new Job(
+                        rs.getString("idJob"),
+                        rs.getString("jobName"),
+                        rs.getString("description"),
+                        rs.getDouble("salary"),
+                        rs.getString("idEmployee")
+                );
+                jobs.add(job);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return jobs;
+    }
+
 }

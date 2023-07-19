@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="content" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.fsa.employeesmanagement.controllers.EmployeeLoginController">
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.fsa.employeesmanagement.controllers.EmployeeLoginController">
    <children>
       <VBox layoutX="269.0" layoutY="105.0" prefHeight="476.0" prefWidth="852.0" AnchorPane.leftAnchor="269.0" AnchorPane.topAnchor="105.0">
          <children>
@@ -21,13 +21,13 @@
                         <Font name="Berlin Sans FB" size="20.0" />
                      </font>
                   </Label>
-                  <JFXButton  fx:id="btnLogin" layoutX="250.0" layoutY="251.0" minHeight="-Infinity" minWidth="-Infinity"  prefHeight="35.0" prefWidth="260.0" style="-fx-background-color: #FFCD07; -fx-background-radius: 50px;" text="ENTER" />
+                  <JFXButton  fx:id="loginButton" onMouseClicked="#handleLogin" layoutX="250.0" layoutY="251.0" minHeight="-Infinity" minWidth="-Infinity"  prefHeight="35.0" prefWidth="260.0" style="-fx-background-color: #FFCD07; -fx-background-radius: 50px;" text="ENTER" />
                   <HBox alignment="CENTER_RIGHT" layoutX="250.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="260.0" style="-fx-background-color: transparent; -fx-border-color: #E1E1E1; -fx-border-radius: 50px;">
                      <padding>
                         <Insets right="10.0" />
                      </padding>
                      <children>
-                        <TextField fx:id="tfCodePIN" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="221.0" promptText="Enter Your Code PIN" style="-fx-background-color: transparent;" />
+                        <TextField fx:id="codePINField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="221.0" promptText="Enter Your PIN Code" style="-fx-background-color: transparent;" />
                      </children>
                   </HBox>
                   <Label layoutX="287.0" layoutY="84.0" text="Employee Login" textFill="#070707">

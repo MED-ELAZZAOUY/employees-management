@@ -1,6 +1,6 @@
 package ma.fsa.employeesmanagement.models;
 
-import java.util.UUID;
+
 
 public class Job {
     private String idJob;

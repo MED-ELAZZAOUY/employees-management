@@ -10,6 +10,7 @@ import ma.fsa.employeesmanagement.dao.EmployeeDao;
 import ma.fsa.employeesmanagement.dao.JobDao;
 import ma.fsa.employeesmanagement.models.Employee;
 import ma.fsa.employeesmanagement.models.Job;
+import ma.fsa.employeesmanagement.utils.ActionTableCell;
 
 import java.net.URL;
 import java.util.List;
@@ -37,7 +38,7 @@ public class JobsEmployeeController implements Initializable {
 
     // ----- jobs
     @FXML
-    private TableView<Job> jobsTableView;
+    public TableView<Job> jobsTableView; //
 
     @FXML
     private TableColumn<Job, String> idJobTabColumn;
@@ -64,7 +65,8 @@ public class JobsEmployeeController implements Initializable {
         idJobTabColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getIdJob()));
         jobNameTabColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getJobName()));
         salaryTabColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getSalary()).asObject());
-
+        // Set the cell factory for the "Actions" column
+        actionTabColumn.setCellFactory(column -> new ActionTableCell<>());
         // Fetch data from the database and populate the TableView
         populateEmployeeTableView();
         populateJobsTableView();
